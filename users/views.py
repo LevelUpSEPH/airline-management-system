@@ -1,3 +1,11 @@
 from django.shortcuts import render
+from .models import Passenger
+from .serializers import PassengerSerializer
 
-# Create your views here.
+class PassengerListCreateAPIView(generics.ListCreateAPIView):
+    queryset = Passenger.objects.all()
+    serializer_class = PassengerSerializer
+
+class PassengerRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Passenger.objects.all()
+    serializer_class = PassengerSerializer

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'flights',
     'reservations',
     'users',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
