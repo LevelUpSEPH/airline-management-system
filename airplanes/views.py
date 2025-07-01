@@ -3,9 +3,7 @@ from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Airplane
-from .models import AirplaneModel
 from .serializers import AirplaneSerializer
-from .serializers import AirplaneModelSerializer
 from flights.serializers import FlightSerializer
 
 class AirplaneListCreateAPIView(generics.ListCreateAPIView):
@@ -26,11 +24,3 @@ class AirplaneFlightsAPIView(APIView):
         flights = airplane.flights.all()
         serializer = FlightSerializer(flights, many=True)
         return Response(serializer.data, status=200)
-
-class AirplaneModelListCreateAPIView(generics.ListCreateAPIView):
-    queryset = AirplaneModel.objects.all()
-    serializer_class = AirplaneModelSerializer
-
-class AirplaneModelRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = AirplaneModel.objects.all()
-    serializer_class = AirplaneModelSerializer

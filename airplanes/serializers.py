@@ -1,10 +1,7 @@
 from rest_framework import serializers
-from .models import Airplane, AirplaneModel
-
-class AirplaneModelSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = AirplaneModel
-        fields = ['id', 'name']
+from .models import Airplane
+from airplanemodels.models import AirplaneModel
+from airplanemodels.serializers import AirplaneModelSerializer
 
 class AirplaneSerializer(serializers.ModelSerializer):
     model = AirplaneModelSerializer(read_only=True)

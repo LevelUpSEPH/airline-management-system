@@ -41,7 +41,10 @@ INSTALLED_APPS = [
     'flights',
     'reservations',
     'users',
+    'airplanemodels',
+    'location',
     'rest_framework',
+    'django_filters',
 ]
 
 MIDDLEWARE = [

@@ -1,13 +1,9 @@
 from rest_framework import serializers
-from .models import Flight, Location
+from .models import Flight
 from airplanes.models import Airplane
+from location.models import Location
 from airplanes.serializers import AirplaneSerializer
-
-class LocationSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Location
-        fields = ['id', 'name']
-        read_only_fields = ['id']
+from location.serializers import LocationSerializer
 
 class FlightSerializer(serializers.ModelSerializer):
     departure = LocationSerializer(read_only=True)

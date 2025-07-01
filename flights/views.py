@@ -3,9 +3,7 @@ from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Flight
-from .models import Location
 from .serializers import FlightSerializer
-from .serializers import LocationSerializer
 from reservations.serializers import ReservationSerializer
 
 # Create your views here.
@@ -28,11 +26,3 @@ class FlightReservationsAPIView(APIView):
         reservations = flight.reservations.all()
         serializer = ReservationSerializer(reservations, many=True)
         return Response(serializer.data, status=200)
-
-class LocationListCreateAPIView(generics.ListCreateAPIView):
-    queryset = Location.objects.all()
-    serializer_class = LocationSerializer
-
-class LocationRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Location.objects.all()
-    serializer_class = LocationSerializer

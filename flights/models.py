@@ -1,10 +1,6 @@
 from django.db import models
+from location.models import Location
 
-class Location(models.Model):
-    name = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.name
 
 class Flight(models.Model):
     flight_number = models.CharField(max_length = 100, unique=True)
