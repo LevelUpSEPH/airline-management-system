@@ -8,9 +8,9 @@ from .views import (
 )
 
 urlpatterns = [
-    path('airplanes/', AirplaneListCreateAPIView.as_view()),
-    path('airplanes/<int:id>/', AirplaneRetrieveUpdateDestroyAPIView.as_view()),
-    path('airplanes/<int:id>/flights/', AirplaneFlightsAPIView.as_view()),
+    path('airplanes/', AirplaneListCreateAPIView.as_view(), name='airplane-list-create'),
+    path('airplanes/<int:pk>/', AirplaneRetrieveUpdateDestroyAPIView.as_view(), name='airplane-detail'),
+    path('airplanes/<int:pk>/flights/', AirplaneFlightsAPIView.as_view(), name='airplane-flights'),
     path('airplanemodels/', AirplaneModelListCreateAPIView.as_view(), name='airplanemodel-list-create'),
-    path('airplanemodels/<int:id>/', AirplaneModelRetrieveUpdateDestroyAPIView.as_view(), name='airplanemodel-detail'),
+    path('airplanemodels/<int:pk>/', AirplaneModelRetrieveUpdateDestroyAPIView.as_view(), name='airplanemodel-detail'),
 ]

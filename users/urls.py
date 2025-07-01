@@ -3,5 +3,5 @@ from .views import PassengerListCreateAPIView, PassengerRetrieveUpdateDestroyAPI
 
 urlpatterns = [
     path('passengers/', PassengerListCreateAPIView.as_view(), name = 'passenger-list-create'),
-    path('passengers/<int:id>/', PassengerRetrieveUpdateDestroyAPIView.as_view, name='passenger-detail')    
+    path('passengers/<int:pk>/', PassengerRetrieveUpdateDestroyAPIView.as_view(), name='passenger-detail')    
 ]

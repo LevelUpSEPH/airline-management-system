@@ -7,6 +7,6 @@ class ReservationListCreateAPIView(generics.ListCreateAPIView):
     queryset = Reservation.objects.all()
     serializer_class = ReservationSerializer
 
-class ReservationRetrieveUpdate(generics.RetrieveUpdateAPIView):
+class ReservationRetrieveUpdateAPIView(generics.RetrieveUpdateAPIView):
     queryset = Reservation.objects.all()
     serializer_class = ReservationSerializer

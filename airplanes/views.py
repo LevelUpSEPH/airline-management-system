@@ -17,9 +17,9 @@ class AirplaneRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView
     serializer_class = AirplaneSerializer
 
 class AirplaneFlightsAPIView(APIView):
-    def get(self, request, id):
+    def get(self, request, pk):
         try:
-            airplane = Airplane.objects.get(pk=id)
+            airplane = Airplane.objects.get(pk=pk)
         except Airplane.DoesNotExist:
             return Response({"detail": "Airplane not found."}, status=404)
         
@@ -27,7 +27,7 @@ class AirplaneFlightsAPIView(APIView):
         serializer = FlightSerializer(flights, many=True)
         return Response(serializer.data, status=200)
 
-class AirplaneModelListCreateAPIView(generic.ListCreateAPIView):
+class AirplaneModelListCreateAPIView(generics.ListCreateAPIView):
     queryset = AirplaneModel.objects.all()
     serializer_class = AirplaneModelSerializer
 
