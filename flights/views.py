@@ -6,6 +6,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
 from .models import Flight
 from .serializers import FlightSerializer
+from .filters import FlightFilter
 from reservations.serializers import ReservationSerializer
 
 # Create your views here.
@@ -14,7 +15,7 @@ class FlightListCreateAPIView(generics.ListCreateAPIView):
     queryset = Flight.objects.all()
     serializer_class = FlightSerializer
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
-    filterset_fields = ['id']
+    filterset_class = FlightFilter
 
 class FlightRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Flight.objects.all()
