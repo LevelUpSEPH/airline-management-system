@@ -4,6 +4,7 @@ from flights.serializers import FlightSerializer
 from users.serializers import PassengerSerializer
 from users.models import Passenger
 from flights.models import Flight
+from .validators import AirplaneCapacityValidator
 
 class ReservationSerializer(serializers.ModelSerializer):
     passenger = PassengerSerializer(read_only=True)
@@ -24,3 +25,8 @@ class ReservationSerializer(serializers.ModelSerializer):
         model = Reservation
         fields = ['id', 'passenger', 'passenger_id', 'flight', 'flight_id', 'reservation_code', 'status', 'created_at']
         read_only_fields = ['id', 'reservation_code', 'created_at']
+
+    def validate(self, attrs):
+        flight = attrs['flight']
+        AirplaneCapacityValidator()(flight)
+        return attrs
