@@ -5,6 +5,7 @@ from users.serializers import PassengerSerializer
 from users.models import Passenger
 from flights.models import Flight
 from .validators import AirplaneCapacityValidator
+from .utilities import send_reservation_email
 
 class ReservationSerializer(serializers.ModelSerializer):
     passenger = PassengerSerializer(read_only=True)
@@ -30,3 +31,8 @@ class ReservationSerializer(serializers.ModelSerializer):
         flight = attrs['flight']
         AirplaneCapacityValidator()(flight)
         return attrs
+
+    def create(self, validated_data):
+        reservation = super().create(validated_data)
+        send_reservation_email(reservation.passenger.email, reservation.reservation_code)
+        return reservation
