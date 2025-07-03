@@ -19,8 +19,8 @@ This is a Django-based API backend for managing airplanes, flights, and reservat
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/your-username/airline-management.git
-cd airline-management
+git https://github.com/LevelUpSEPH/airline-management-system
+cd airline-management-system
 ```
 
 ### 2. Create and activate a virtual environment
@@ -57,7 +57,7 @@ To enable reservation email notifications:
 
 1. Use a Gmail account.
 2. Enable 2FA and create an App Password.
-3. Add the following to `backend/settings.py`:
+3. Update the following in `backend/settings.py`:
 
 ```python
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -77,7 +77,7 @@ EMAIL_HOST_PASSWORD = 'your-app-password'
 | Method | Endpoint                        | Description                          |
 |--------|----------------------------------|--------------------------------------|
 | GET    | `/api/airplanes/`               | List all airplanes                   |
-| GET    | `/api/airplanes/{id}/`          | Get airplane details                 |
+| GET    | `/api/airplanes/{id}/`          | Get specific airplane details                 |
 | GET    | `/api/airplanes/{id}/flights/`  | List flights for an airplane         |
 | POST   | `/api/airplanes/`               | Create a new airplane                |
 | PATCH  | `/api/airplanes/{id}/`          | Update an airplane                   |
@@ -90,7 +90,7 @@ EMAIL_HOST_PASSWORD = 'your-app-password'
 | Method | Endpoint                         | Description                          |
 |--------|-----------------------------------|--------------------------------------|
 | GET    | `/api/flights/`                 | List all flights                     |
-| GET    | `/api/flights/{id}/`            | Get flight details                   |
+| GET    | `/api/flights/{id}/`            | Get specific flight details                   |
 | GET    | `/api/flights/{id}/reservations/`| List reservations for a flight       |
 | POST   | `/api/flights/`                 | Create a new flight                  |
 | PATCH  | `/api/flights/{id}/`            | Update a flight                      |
@@ -103,7 +103,7 @@ EMAIL_HOST_PASSWORD = 'your-app-password'
 | Method | Endpoint                      | Description                          |
 |--------|--------------------------------|--------------------------------------|
 | GET    | `/api/reservations/`         | List all reservations                |
-| GET    | `/api/reservations/{id}/`    | Get reservation details              |
+| GET    | `/api/reservations/{id}/`    | Get specific reservation details              |
 | POST   | `/api/reservations/`         | Create a new reservation             |
 | PATCH  | `/api/reservations/{id}/`    | Update a reservation                 |
 
@@ -111,10 +111,11 @@ EMAIL_HOST_PASSWORD = 'your-app-password'
 
 ## ✅ Tests
 
-You can run tests using the exported POSTMAN collection.
+You can run tests using the exported POSTMAN collection written below.
 
+```bash
 https://api.postman.com/collections/32469330-63cd2750-503a-4218-ab8e-fd7683a5fd95
-
+```
 ---
 
 ## Author
